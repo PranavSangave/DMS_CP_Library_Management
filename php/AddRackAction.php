@@ -13,7 +13,7 @@
      $time_stamp = $date . "," . $time;
      
      //inserting query
-    $insertquery = "INSERT INTO `rack`(`name`, `status`) VALUES ('$rack_name','$status')";
+    $insertquery = "INSERT INTO `rack`(`name`) VALUES ('$rack_name')";
 
      //firing the $query
      $res = mysqli_query($con,$insertquery);

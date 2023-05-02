@@ -8,7 +8,7 @@
    if (isset($_POST['submit'])) {
      //fetching uploaded files name
      $author_name = $_POST['author_name'];
-     $status = $_POST['status'];
+    //  $status = $_POST['status'];
 
      // Fetching Today's Date
      $timezone = date_default_timezone_set('Asia/Kolkata');
@@ -19,7 +19,8 @@
      //update query
      $id = $_GET['id'];
 
-    $updateQuery = "UPDATE `author` SET `name`='$author_name',`status`='$status' WHERE `authorid`=$id" ;
+    // $updateQuery = "UPDATE `author` SET `name`='$author_name',`status`='$status' WHERE `authorid`=$id" ;
+    $updateQuery = "UPDATE `author` SET `name`='$author_name' WHERE `authorid`=$id" ;
 
      //firing the $query
      $res = mysqli_query($con,$updateQuery);
@@ -162,7 +163,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
+               <li class="nav-item menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -172,30 +173,59 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./index.html" class="nav-link">
+                  <a href="./index.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Home</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="inventory.html" class="nav-link active">
+                  <a href="issue_books.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Issue Book</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="manage_author.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Authors</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="manage_books.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Manage Books</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="quotation.html" class="nav-link">
+                  <a href="manage_category.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Quotations</p>
+                    <p>Manage Categories</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="invoice.html" class="nav-link">
+                  <a href="manage_publisher.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Tax Invoice</p>
+                    <p>Manage Publishers</p>
                   </a>
                 </li>
-
+                <li class="nav-item">
+                  <a href="manage_rack.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Racks</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="manage_users.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Users</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="php/SendEmailNotification.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Send Reminders</p>
+                  </a>
+                </li>
               </ul>
             </li>
 
@@ -329,13 +359,13 @@
                     <label for="exampleInputEmail1">author Name</label>
                     <input type="text" value="<?php echo $res1['name']; ?>" name="author_name" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleSelectBorder">Select Status</label>
                     <select class="custom-select" name="status" id="exampleSelectBorder">
                       <option value="enable">Enable</option>
                       <option value="disable">Disable</option>
                     </select>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

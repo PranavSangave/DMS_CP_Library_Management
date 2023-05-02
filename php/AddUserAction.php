@@ -14,8 +14,11 @@
      $time = date('H:i:s');
      $time_stamp = $date . "," . $time;
      
+    // Creating password
+    $pass = md5($stud_prn);
+
      //inserting query
-    $insertquery = "INSERT INTO `user`(`prn`, `first_name`, `last_name`, `email`) VALUES ('$stud_prn','$first_name','$last_name','$email')";
+    $insertquery = "INSERT INTO `users`(`stud_prn`, `first_name`, `last_name`, `email`, `password`) VALUES ('$stud_prn','$first_name','$last_name','$email', '$pass')";
 
      //firing the $query
      $res = mysqli_query($con,$insertquery);

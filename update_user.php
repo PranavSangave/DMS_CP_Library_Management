@@ -7,7 +7,7 @@
 
    if (isset($_POST['submit'])) {
      //fetching uploaded files name
-     $user_prn = $_POST['prn'];
+     $user_prn = $_POST['stud_prn'];
      $first_name = $_POST['first_name'];
      $last_name = $_POST['last_name'];
      $email = $_POST['email'];
@@ -21,7 +21,7 @@
      //update query
      $id = $_GET['id'];
 
-    $updateQuery = "UPDATE `user` SET `prn`='$user_prn',`first_name`='$first_name',`last_name`='$last_name',`email`='$email' WHERE `id`=$id" ;
+    $updateQuery = "UPDATE `users` SET `stud_prn`='$user_prn',`first_name`='$first_name',`last_name`='$last_name',`email`='$email' WHERE `stud_prn`=$id" ;
 
      //firing the $query
      $res = mysqli_query($con,$updateQuery);
@@ -163,7 +163,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
+               <li class="nav-item menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -173,30 +173,59 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./index.html" class="nav-link">
+                  <a href="./index.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Home</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="inventory.html" class="nav-link active">
+                  <a href="issue_books.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Issue Book</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="manage_author.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Authors</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="manage_books.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Manage Books</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="quotation.html" class="nav-link">
+                  <a href="manage_category.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Quotations</p>
+                    <p>Manage Categories</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="invoice.html" class="nav-link">
+                  <a href="manage_publisher.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Tax Invoice</p>
+                    <p>Manage Publishers</p>
                   </a>
                 </li>
-
+                <li class="nav-item">
+                  <a href="manage_rack.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Racks</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="manage_users.php" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Manage Users</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="php/SendEmailNotification.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Send Reminders</p>
+                  </a>
+                </li>
               </ul>
             </li>
 
@@ -317,7 +346,7 @@
 
                 $id = $_GET['id'];
 
-                $selectquery = " select * from user WHERE id='$id' ";
+                $selectquery = " select * from users WHERE stud_prn='$id' ";
 
                 $query = mysqli_query($con,$selectquery);
 
@@ -328,7 +357,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Student PRN</label>
-                    <input type="text" value="<?php echo $res1['prn']; ?>" name="prn" class="form-control" id="exampleInputEmail1" placeholder="Enter PRN">
+                    <input type="text" value="<?php echo $res1['stud_prn']; ?>" name="stud_prn" class="form-control" id="exampleInputEmail1" placeholder="Enter PRN">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">First Name</label>
@@ -336,7 +365,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Last Name</label>
-                    <input type="text" value="<?php echo $res1['first_name']; ?>" name="last_name" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name">
+                    <input type="text" value="<?php echo $res1['last_name']; ?>" name="last_name" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>

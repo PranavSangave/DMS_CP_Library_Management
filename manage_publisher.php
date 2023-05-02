@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BookGuardian | Manage Categories</title>
+  <title>BookGuardian | Manage Publishers</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -301,13 +301,6 @@
                     <label for="exampleInputEmail1">Publisher Name</label>
                     <input type="text" name="publisher_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Book Name">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleSelectBorder">Select Status</label>
-                    <select class="custom-select" name="status" id="exampleSelectBorder">
-                      <option value="enable">Enable</option>
-                      <option value="disable">Disable</option>
-                    </select>
-                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -337,7 +330,6 @@
                 <tr>
                   <th>Publisher Id</th>
                   <th>Publisher Name</th>
-                  <th>Status</th>
                   <th>Delete</th>
                   <th>Edit</th>
                 </tr>
@@ -356,7 +348,6 @@
                           <tr>
                             <td><?php echo $res['publisherid']; ?></td>
                             <td><?php echo $res['name']; ?></td>
-                            <td><?php echo $res['status']; ?></td>
                             <td><a href="deletePhp/DeletePublisherAction.php?id=<?php echo $res['publisherid']; ?>"  title="delete"><i class="fa fa-trash"></i></a></td>
                             <td><a href="update_publisher.php?id=<?php echo $res['publisherid']; ?>"  title="Update"><i class="fa fa-edit"></i></a></td>
                       </tr>
@@ -369,7 +360,6 @@
                 <tr>
                   <th>Publisher Id</th>
                   <th>Publisher Name</th>
-                  <th>Status</th>
                   <th>Delete</th>
                   <th>Edit</th> 
                 </tr>

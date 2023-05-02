@@ -385,13 +385,13 @@
                     <label for="exampleInputEmail1">Number Of Book Copies Available</label>
                     <input type="number" name="qty" class="form-control" id="exampleInputEmail1" placeholder="Enter No. Of. Copies">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleSelectBorder">Select Status</label>
                     <select class="custom-select" name="status" id="exampleSelectBorder">
                       <option value="enable">Enable</option>
                       <option value="disable">Disable</option>
                     </select>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -426,8 +426,8 @@
                   <th>Publisher</th>
                   <th>Category</th>
                   <th>Rack</th>
-                  <th>Qty</th>
-                  <th>Status</th>
+                  <th>Total Copies</th>
+                  <th>Available Copies</th>
                   <th>Updated</th>
                   <th>Delete</th>
                   <th>Edit</th>
@@ -446,14 +446,42 @@
                         ?>
                           <tr>
                             <td><?php echo $res['bookid']; ?></td>
-                            <td><?php echo $res['categoryid']; ?></td>
-                            <td><?php echo $res['authorid']; ?></td>
-                            <td><?php echo $res['rackid']; ?></td>
                             <td><?php echo $res['name']; ?></td>
-                            <td><?php echo $res['publisherid']; ?></td>
                             <td><?php echo $res['isbn']; ?></td>
+                            <td>
+                              <?php
+                                $athr_id = $res['authorid'];
+                                $qr1 = mysqli_query($con, "SELECT * FROM author WHERE authorid='$athr_id' "); 
+                                $rs1 = mysqli_fetch_array($qr1);
+                                echo $rs1['name']; 
+                              ?>
+                            </td>
+                            <td>
+                              <?php
+                                $pub_id = $res['publisherid'];
+                                $qr2 = mysqli_query($con, "SELECT * FROM publisher WHERE publisherid='$pub_id' "); 
+                                $rs2 = mysqli_fetch_array($qr2);
+                                echo $rs2['name']; 
+                              ?>
+                            </td>
+                            <td>
+                              <?php
+                                $cat_id = $res['categoryid'];
+                                $qr3 = mysqli_query($con, "SELECT * FROM category WHERE categoryid='$cat_id' "); 
+                                $rs3 = mysqli_fetch_array($qr3);
+                                echo $rs3['name']; 
+                              ?>
+                            </td>
+                            <td>
+                              <?php
+                                $rk_id = $res['rackid'];
+                                $qr4 = mysqli_query($con, "SELECT * FROM rack WHERE rackid='$rk_id' "); 
+                                $rs4 = mysqli_fetch_array($qr4);
+                                echo $rs4['name']; 
+                              ?>
+                            </td>
                             <td><?php echo $res['no_of_copy']; ?></td>
-                            <td><?php echo $res['status']; ?></td>
+                            <td><?php echo $res['available_copy']; ?></td>
                             <td><?php echo $res['updated_on']; ?></td>
                             <td><a href="deletePhp/DeleteBookAction.php?id=<?php echo $res['bookid']; ?>"  title="delete"><i class="fa fa-trash"></i></a></td>
                             <td><a href="update_books.php?id=<?php echo $res['bookid']; ?>"  title="Update"><i class="fa fa-edit"></i></a></td>
@@ -472,8 +500,8 @@
                   <th>Publisher</th>
                   <th>Category</th>
                   <th>Rack</th>
-                  <th>Qty</th>
-                  <th>Status</th>
+                  <th>Total Copies</th>
+                  <th>Available Copy</th>
                   <th>Updated</th>
                   <th>Delete</th>
                   <th>Edit</th>

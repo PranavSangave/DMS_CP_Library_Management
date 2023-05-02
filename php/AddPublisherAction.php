@@ -13,7 +13,7 @@
      $time_stamp = $date . "," . $time;
      
      //inserting query
-    $insertquery = "INSERT INTO `publisher`(`name`, `status`) VALUES ('$publisher_name','$status')";
+    $insertquery = "INSERT INTO `publisher`(`name`) VALUES ('$publisher_name')";
 
      //firing the $query
      $res = mysqli_query($con,$insertquery);

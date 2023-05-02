@@ -323,13 +323,13 @@
 
                             include 'dbcon.php';
 
-                            $selectquery = " select * from user ";
+                            $selectquery = " select * from users ";
 
                             $query = mysqli_query($con,$selectquery);
 
                             while ($res = mysqli_fetch_array($query)) {
                               ?>
-                                <option value="<?php echo $res['prn']?>"><?php echo $res['prn']?></option>
+                                <option value="<?php echo $res['stud_prn']?>"><?php echo $res['stud_prn']?></option>
                               <?php
                             }
                         ?>
@@ -408,7 +408,7 @@
                               <?php
                               // <!-- Finding Student Name from table user where PRN is same -->
                                 $studid = $res['student_prn'];
-                                $studFetchQuery = "SELECT * FROM user WHERE `prn` = $studid";
+                                $studFetchQuery = "SELECT * FROM users WHERE `stud_prn` = $studid";
                                 $studQuery = mysqli_query($con, $studFetchQuery);
                                 while($studRes = mysqli_fetch_array($studQuery)) {
                                   echo $studRes['first_name'] . " " . $studRes['last_name'];

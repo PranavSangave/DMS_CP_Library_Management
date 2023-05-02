@@ -304,11 +304,11 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">First Name</label>
-                    <input type="text" name="first_name" class="form-control" id="exampleInputEmail1" placeholder="Enter ISBN">
+                    <input type="text" name="first_name" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Last Name</label>
-                    <input type="text" name="last_name" class="form-control" id="exampleInputEmail1" placeholder="Enter ISBN">
+                    <input type="text" name="last_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Last Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email Id</label>
@@ -355,19 +355,19 @@
 
                       include 'dbcon.php';
 
-                      $selectquery = " select * from user";
+                      $selectquery = " select * from users";
 
                       $query = mysqli_query($con,$selectquery);
 
                       while ($res = mysqli_fetch_array($query)) {
                         ?>
                           <tr>
-                            <td><?php echo $res['prn']; ?></td>
+                            <td><?php echo $res['stud_prn']; ?></td>
                             <td><?php echo $res['first_name']; ?></td>
                             <td><?php echo $res['last_name']; ?></td>
                             <td><?php echo $res['email']; ?></td>
-                            <td><a href="deletePhp/DeleteUserAction.php?id=<?php echo $res['id']; ?>"  title="delete"><i class="fa fa-trash"></i></a></td>
-                            <td><a href="update_user.php?id=<?php echo $res['id']; ?>"  title="Update"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="deletePhp/DeleteUserAction.php?id=<?php echo $res['stud_prn']; ?>"  title="delete"><i class="fa fa-trash"></i></a></td>
+                            <td><a href="update_user.php?id=<?php echo $res['stud_prn']; ?>"  title="Update"><i class="fa fa-edit"></i></a></td>
                       </tr>
                         <?php
                       }

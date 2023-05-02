@@ -301,13 +301,13 @@
                     <label for="exampleInputEmail1">Author Name</label>
                     <input type="text" name="author_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Author Name">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleSelectBorder">Select Status</label>
                     <select class="custom-select" name="status" id="exampleSelectBorder">
                       <option value="enable">Enable</option>
                       <option value="disable">Disable</option>
                     </select>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -337,7 +337,7 @@
                 <tr>
                   <th>Author Id</th>
                   <th>Author Name</th>
-                  <th>Status</th>
+                  <!-- <th>Status</th> -->
                   <th>Delete</th>
                   <th>Edit</th>
                 </tr>
@@ -356,7 +356,6 @@
                           <tr>
                             <td><?php echo $res['authorid']; ?></td>
                             <td><?php echo $res['name']; ?></td>
-                            <td><?php echo $res['status']; ?></td>
                             <td><a href="deletePhp/DeleteAuthorAction.php?id=<?php echo $res['authorid']; ?>"  title="delete"><i class="fa fa-trash"></i></a></td>
                             <td><a href="update_author.php?id=<?php echo $res['authorid']; ?>"  title="Update"><i class="fa fa-edit"></i></a></td>
                       </tr>
@@ -369,7 +368,6 @@
                 <tr>
                   <th>Author Id</th>
                   <th>Author Name</th>
-                  <th>Status</th>
                   <th>Delete</th>
                   <th>Edit</th> 
                 </tr>
