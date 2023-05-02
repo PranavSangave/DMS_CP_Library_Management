@@ -7,7 +7,7 @@
 
    if (isset($_POST['submit'])) {
      //fetching uploaded files name
-     $user_prn = $_POST['prn'];
+     $user_prn = $_POST['stud_prn'];
      $first_name = $_POST['first_name'];
      $last_name = $_POST['last_name'];
      $email = $_POST['email'];
@@ -21,7 +21,7 @@
      //update query
      $id = $_GET['id'];
 
-    $updateQuery = "UPDATE `user` SET `prn`='$user_prn',`first_name`='$first_name',`last_name`='$last_name',`email`='$email' WHERE `id`=$id" ;
+    $updateQuery = "UPDATE `users` SET `stud_prn`='$user_prn',`first_name`='$first_name',`last_name`='$last_name',`email`='$email' WHERE `stud_prn`=$id" ;
 
      //firing the $query
      $res = mysqli_query($con,$updateQuery);
@@ -317,7 +317,7 @@
 
                 $id = $_GET['id'];
 
-                $selectquery = " select * from user WHERE id='$id' ";
+                $selectquery = " select * from users WHERE stud_prn='$id' ";
 
                 $query = mysqli_query($con,$selectquery);
 
@@ -328,7 +328,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Student PRN</label>
-                    <input type="text" value="<?php echo $res1['prn']; ?>" name="prn" class="form-control" id="exampleInputEmail1" placeholder="Enter PRN">
+                    <input type="text" value="<?php echo $res1['stud_prn']; ?>" name="stud_prn" class="form-control" id="exampleInputEmail1" placeholder="Enter PRN">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">First Name</label>
@@ -336,7 +336,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Last Name</label>
-                    <input type="text" value="<?php echo $res1['first_name']; ?>" name="last_name" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name">
+                    <input type="text" value="<?php echo $res1['last_name']; ?>" name="last_name" class="form-control" id="exampleInputEmail1" placeholder="Enter First Name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>

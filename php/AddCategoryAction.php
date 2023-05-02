@@ -13,7 +13,7 @@
      $time_stamp = $date . "," . $time;
      
      //inserting query
-    $insertquery = "INSERT INTO `category`(`name`, `status`) VALUES ('$category_name','$status')";
+    $insertquery = "INSERT INTO `category`(`name`) VALUES ('$category_name')";
 
      //firing the $query
      $res = mysqli_query($con,$insertquery);

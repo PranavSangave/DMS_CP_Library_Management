@@ -1,5 +1,8 @@
 <?php
 
+    try
+    {
+
     include '../dbcon.php';
 
     $id = $_GET['id'];
@@ -8,8 +11,15 @@
 
     $query = mysqli_query($con,$deletequery);
 
-    // header('location:../stud_panel.php#studentControl');
-    echo "<script> window.location.href = '../manage_author.php'; </script>";
+    if ($query) {
+        echo "<script> window.location.href = '../manage_author.php'; </script>";
+    } else {
+        echo "<script> alert('Cant Delete Author Because It Is Foregin Key'); window.location.href = '../manage_author.php'; </script>";
+    }
+    }
+    catch(Exception $e) {
+        echo "<script> window.location.href = '../manage_author.php'; </script>";
+    }
 
 
  ?>

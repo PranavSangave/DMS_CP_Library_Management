@@ -302,13 +302,7 @@
                     <label for="exampleInputEmail1">Category Name</label>
                     <input type="text" name="category_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Book Name">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleSelectBorder">Select Status</label>
-                    <select class="custom-select" name="status" id="exampleSelectBorder">
-                      <option value="enable">Enable</option>
-                      <option value="disable">Disable</option>
-                    </select>
-                  </div>
+                  
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -338,7 +332,6 @@
                 <tr>
                   <th>Category Id</th>
                   <th>Category Name</th>
-                  <th>Status</th>
                   <th>Delete</th>
                   <th>Edit</th>
                 </tr>
@@ -357,7 +350,6 @@
                           <tr>
                             <td><?php echo $res['categoryid']; ?></td>
                             <td><?php echo $res['name']; ?></td>
-                            <td><?php echo $res['status']; ?></td>
                             <td><a href="deletePhp/DeleteCategoryAction.php?id=<?php echo $res['categoryid']; ?>"  title="delete"><i class="fa fa-trash"></i></a></td>
                             <td><a href="update_category.php?id=<?php echo $res['categoryid']; ?>"  title="Update"><i class="fa fa-edit"></i></a></td>
                       </tr>
@@ -370,7 +362,6 @@
                 <tr>
                   <th>Category Id</th>
                   <th>Category Name</th>
-                  <th>Status</th>
                   <th>Delete</th>
                   <th>Edit</th> 
                 </tr>

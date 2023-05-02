@@ -4,7 +4,7 @@
 
    if (isset($_POST['submit'])) {
      $author_name = $_POST['author_name'];
-     $status = $_POST['status'];
+    //  $status = $_POST['status'];
 
      // Fetching Today's Date
      $timezone = date_default_timezone_set('Asia/Kolkata');
@@ -13,7 +13,8 @@
      $time_stamp = $date . "," . $time;
      
      //inserting query
-    $insertquery = "INSERT INTO `author`(`name`, `status`) VALUES ('$author_name','$status')";
+    // $insertquery = "INSERT INTO `author`(`name`, `status`) VALUES ('$author_name','$status')";
+    $insertquery = "INSERT INTO `author`(`name`) VALUES ('$author_name')";
 
      //firing the $query
      $res = mysqli_query($con,$insertquery);

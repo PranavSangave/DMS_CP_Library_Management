@@ -10,7 +10,6 @@
      $category = $_POST['category'];
      $rack = $_POST['rack'];
      $qty = $_POST['qty'];
-     $status = $_POST['status'];
 
      // Fetching Today's Date
      $timezone = date_default_timezone_set('Asia/Kolkata');
@@ -19,7 +18,7 @@
      $time_stamp = $date . "," . $time;
      
      //inserting query
-    $insertquery = "INSERT INTO `book`(`categoryid`, `authorid`, `rackid`, `name`, `publisherid`, `isbn`, `no_of_copy`, `status`, `added_on`, `updated_on`) VALUES ('$category','$author','$rack','$book_name','$publisher','$isbn_number','$qty','$status','$time_stamp','$time_stamp')";
+    $insertquery = "INSERT INTO `book`(`categoryid`, `authorid`, `rackid`, `name`, `publisherid`, `isbn`, `no_of_copy`, `available_copy` ,`added_on`, `updated_on`) VALUES ('$category','$author','$rack','$book_name','$publisher','$isbn_number','$qty', '$qty','$time_stamp','$time_stamp')";
 
      //firing the $query
      $res = mysqli_query($con,$insertquery);

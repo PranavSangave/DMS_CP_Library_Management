@@ -14,7 +14,7 @@
      $category = $_POST['category'];
      $rack = $_POST['rack'];
      $qty = $_POST['qty'];
-     $status = $_POST['status'];
+    //  $status = $_POST['status'];
 
      // Fetching Today's Date
      $timezone = date_default_timezone_set('Asia/Kolkata');
@@ -25,7 +25,7 @@
      //update query
      $id = $_GET['id'];
 
-    $updateQuery = "UPDATE `book` SET `categoryid`='$category',`authorid`='$author',`rackid`='$rack',`name`='$book_name',`publisherid`='$publisher',`isbn`='$isbn_number',`no_of_copy`='$qty',`status`='$status',`updated_on`='$timestamp' WHERE `bookid`=$id" ;
+    $updateQuery = "UPDATE `book` SET `categoryid`='$category',`authorid`='$author',`rackid`='$rack',`name`='$book_name',`publisherid`='$publisher',`isbn`='$isbn_number',`no_of_copy`='$qty',`updated_on`='$timestamp' WHERE `bookid`=$id" ;
 
      //firing the $query
      $res = mysqli_query($con,$updateQuery);
@@ -415,13 +415,6 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Number Of Book Copies Available</label>
                     <input type="number" value="<?php echo $res1['no_of_copy']?>" name="qty" class="form-control" id="exampleInputEmail1" placeholder="Enter No. Of. Copies">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleSelectBorder">Select Status</label>
-                    <select class="custom-select" name="status" id="exampleSelectBorder">
-                      <option value="enable">Enable</option>
-                      <option value="disable">Disable</option>
-                    </select>
                   </div>
                 </div>
                 <!-- /.card-body -->

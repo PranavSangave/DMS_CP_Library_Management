@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>BookGuardian | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -27,6 +27,22 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+  <style>
+    #send_reminder_btn{
+      border:1px solid; border-radius:8px; line-height:20px; margin-left:10px; background: #2193b0;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      color: white;
+      transition: .3s;
+    }
+    #send_reminder_btn:hover{
+      transform:scale(1.03);
+      background: #FDC830;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -62,6 +78,9 @@
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="manage_users.php" class="nav-link">Users</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a id="send_reminder_btn" name="submit" type="submit" href="php/SendEmailNotification.php" class="nav-link">Send Reminders</a>
         </li>
       </ul>
 
@@ -177,6 +196,12 @@
                   <a href="manage_users.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Manage Users</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="php/SendEmailNotification.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Send Reminders</p>
                   </a>
                 </li>
               </ul>
@@ -295,7 +320,7 @@
       $result2 = $con->query($sql2);
 
       // Total Student Registered
-      $sql3 = "SELECT COUNT(*) as total_rows FROM user";
+      $sql3 = "SELECT COUNT(*) as total_rows FROM users";
       $result3 = $con->query($sql3);
 
       // Total Student Registered
@@ -315,15 +340,19 @@
                 <div class="inner">
                   <h3>
                     <?php
-                      // Get total number of rows
-                      if ($result1->num_rows > 0) {
-                        $row = $result1->fetch_assoc();
-                        $total_rows = $row["total_rows"];
-                        echo $total_rows;
-                      } else {
-                        echo "0";
+                    
+                      $selectqueryp = " select * from book ";
+
+                      $queryp = mysqli_query($con,$selectqueryp);
+
+                      $total_books = 0;
+
+                      // Calculating total books
+                      while ($resp = mysqli_fetch_array($queryp)) {
+                        $total_books = $total_books + $resp['no_of_copy']; 
                       }
 
+                      echo $total_books;
                     ?>
                   </h3>
                   <p>Total Books</p>
@@ -334,20 +363,25 @@
               </div>
             </div>
 
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-2 col-6">
               <!-- small box -->
               <div class="small-box bg-secondary">
                 <div class="inner">
                   <h3>
                     <?php
-                      // Get total number of rows
-                      if ($result2->num_rows > 0) {
-                        $row = $result2->fetch_assoc();
-                        $total_rows = $row["total_rows"];
-                        echo $total_rows;
-                      } else {
-                        echo "0";
+                      
+                      $selectqueryq = " select * from book ";
+
+                      $queryq = mysqli_query($con,$selectqueryq);
+
+                      $total_avl_books = 0;
+
+                      // Calculating total books
+                      while ($resq = mysqli_fetch_array($queryq)) {
+                        $total_avl_books = $total_avl_books + $resq['available_copy']; 
                       }
+
+                      echo $total_avl_books;
                     ?>
                   </h3>
 
@@ -359,7 +393,7 @@
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-2 col-6">
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
@@ -376,7 +410,7 @@
                       ?>
                   </h3>
 
-                  <p>Total Student Registered</p>
+                  <p>Total Students</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
@@ -384,21 +418,26 @@
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-2 col-6">
               <!-- small box -->
-              <div class="small-box bg-warning">
+              <div class="small-box bg-secondary">
                 <div class="inner">
                   <h3>
                     <?php
-                      // Get total number of rows
-                      if ($result4->num_rows > 0) {
-                        $row = $result4->fetch_assoc();
-                        $total_rows = $row["total_rows"];
-                        echo $total_rows;
-                      } else {
-                        echo "0";
-                      }
-                    ?>
+                    
+                    $selectqueryj = " select * from issued_book WHERE status='Issued' ";
+
+                    $queryj = mysqli_query($con,$selectqueryj);
+
+                    $total_issued_books = 0;
+
+                    // Calculating total books
+                    while ($resj = mysqli_fetch_array($queryj)) {
+                      $total_issued_books = $total_issued_books + 1; 
+                    }
+
+                    echo $total_issued_books;
+                  ?>
                   </h3>
 
                   <p>Issued Books</p>
@@ -408,6 +447,36 @@
                 </div>
               </div>
             </div>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3>
+                    <?php
+                    
+                    $selectqueryi = " select * from issued_book WHERE status='Returned' ";
+
+                    $queryi = mysqli_query($con,$selectqueryi);
+
+                    $total_issued_books = 0;
+
+                    // Calculating total books
+                    while ($resi = mysqli_fetch_array($queryi)) {
+                      $total_issued_books = $total_issued_books + 1; 
+                    }
+
+                    echo $total_issued_books;
+                  ?>
+                  </h3>
+
+                  <p>Returned Books</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+              </div>
+            </div>
+            
             <!-- ./col -->
           </div>
           <!-- /.row -->
@@ -415,7 +484,7 @@
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-6 connectedSortable">
+            <section class="col-lg-4 connectedSortable">
               <!-- PRODUCT LIST -->
               <div class="card">
                 <div class="card-header">
@@ -438,7 +507,7 @@
 
                       include 'dbcon.php';
 
-                      $selectquery = " SELECT * FROM user ORDER BY id DESC LIMIT 4 ";
+                      $selectquery = " SELECT * FROM users ORDER BY stud_prn DESC LIMIT 4 ";
 
                       $query = mysqli_query($con,$selectquery);
                       
@@ -450,9 +519,9 @@
                             <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
                           </div>
                           <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title"><?php echo $res['first_name'] . $res['last_name'] ; ?>
+                            <a href="javascript:void(0)" class="product-title"><?php echo $res['first_name'] . " ". $res['last_name'] ; ?>
                             <span class="product-description">
-                              <?php echo "PRN:" . $res['prn'] ?>
+                              <?php echo "PRN:" . $res['stud_prn'] ?>
                             </span>
                           </div>
                         </li>
@@ -466,7 +535,7 @@
                 <!-- /.card -->
             </section>
             <!-- right col -->
-            <section class="col-lg-6 connectedSortable">
+            <section class="col-lg-4 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
 
               <!-- PRODUCT LIST -->
@@ -486,11 +555,12 @@
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                   <ul class="products-list product-list-in-card pl-2 pr-2">
+                  
                   <?php
 
                       include 'dbcon.php';
 
-                      $selectquery = " SELECT * FROM issued_book ORDER BY id DESC LIMIT 4 ";
+                      $selectquery = " SELECT * FROM issued_book WHERE `status`='Issued' ORDER BY id DESC LIMIT 4";
 
                       $query = mysqli_query($con,$selectquery);
 
@@ -509,6 +579,61 @@
                             <a href="javascript:void(0)" class="product-title"><?php echo $res2; ?>
                             <span class="product-description">
                               <?php echo "Issude To (PRN): " . $res['student_prn'] ?>
+                            </span>
+                          </div>
+                        </li>
+                      <?php
+                      }
+                      ?>
+                  </ul>
+                </div>
+                <!-- /.card-body -->
+                <!-- /.card -->
+            </section>
+
+            <section class="col-lg-4 connectedSortable">
+              <!-- Custom tabs (Charts with tabs)-->
+
+              <!-- PRODUCT LIST -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Recently Returned Books</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                  <ul class="products-list product-list-in-card pl-2 pr-2">
+                  <?php
+
+                      include 'dbcon.php';
+
+                      $selectquery = " SELECT * FROM issued_book WHERE `status`='Returned' ORDER BY id DESC LIMIT 4 ";
+
+                      $query = mysqli_query($con,$selectquery);
+
+                      $i = 4;
+                      while ($res = mysqli_fetch_array($query)) {
+                        $bookIds = $res['book_id']; 
+                        $selectquery2 = "SELECT * FROM book WHERE bookid = $bookIds";
+                        $query2 = mysqli_query($con,$selectquery2);
+                        $res2 = mysqli_fetch_array($query2)['name'];
+                      ?>
+                        <li class="item">
+                          <div class="product-img">
+                            <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                          </div>
+                          <div class="product-info">
+                            <a href="javascript:void(0)" class="product-title"><?php echo $res2; ?>
+                            <span class="product-description">
+                              <?php echo "Returned By(PRN): " . $res['student_prn'] ?>
                             </span>
                           </div>
                         </li>

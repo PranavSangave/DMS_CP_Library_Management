@@ -8,7 +8,6 @@
    if (isset($_POST['submit'])) {
      //fetching uploaded files name
      $category_name = $_POST['category_name'];
-     $status = $_POST['status'];
 
      // Fetching Today's Date
      $timezone = date_default_timezone_set('Asia/Kolkata');
@@ -19,7 +18,7 @@
      //update query
      $id = $_GET['id'];
 
-    $updateQuery = "UPDATE `category` SET `name`='$category_name',`status`='$status' WHERE `categoryid`=$id" ;
+    $updateQuery = "UPDATE `category` SET `name`='$category_name' WHERE `categoryid`=$id" ;
 
      //firing the $query
      $res = mysqli_query($con,$updateQuery);
@@ -328,13 +327,6 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Category Name</label>
                     <input type="text" value="<?php echo $res1['name']; ?>" name="category_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleSelectBorder">Select Status</label>
-                    <select class="custom-select" name="status" id="exampleSelectBorder">
-                      <option value="enable">Enable</option>
-                      <option value="disable">Disable</option>
-                    </select>
                   </div>
                 </div>
                 <!-- /.card-body -->

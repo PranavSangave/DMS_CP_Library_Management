@@ -19,7 +19,7 @@
      //update query
      $id = $_GET['id'];
 
-    $updateQuery = "UPDATE `rack` SET `name`='$rack_name',`status`='$status' WHERE `rackid`=$id" ;
+    $updateQuery = "UPDATE `rack` SET `name`='$rack_name' WHERE `rackid`=$id" ;
 
      //firing the $query
      $res = mysqli_query($con,$updateQuery);
@@ -328,13 +328,6 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Rack Name</label>
                     <input type="text" value="<?php echo $res1['name']; ?>" name="rack_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Rack Name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleSelectBorder">Select Status</label>
-                    <select class="custom-select" name="status" id="exampleSelectBorder">
-                      <option value="enable">Enable</option>
-                      <option value="disable">Disable</option>
-                    </select>
                   </div>
                 </div>
                 <!-- /.card-body -->

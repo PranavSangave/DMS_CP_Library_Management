@@ -8,7 +8,7 @@
    if (isset($_POST['submit'])) {
      //fetching uploaded files name
      $author_name = $_POST['author_name'];
-     $status = $_POST['status'];
+    //  $status = $_POST['status'];
 
      // Fetching Today's Date
      $timezone = date_default_timezone_set('Asia/Kolkata');
@@ -19,7 +19,8 @@
      //update query
      $id = $_GET['id'];
 
-    $updateQuery = "UPDATE `author` SET `name`='$author_name',`status`='$status' WHERE `authorid`=$id" ;
+    // $updateQuery = "UPDATE `author` SET `name`='$author_name',`status`='$status' WHERE `authorid`=$id" ;
+    $updateQuery = "UPDATE `author` SET `name`='$author_name' WHERE `authorid`=$id" ;
 
      //firing the $query
      $res = mysqli_query($con,$updateQuery);
@@ -329,13 +330,13 @@
                     <label for="exampleInputEmail1">author Name</label>
                     <input type="text" value="<?php echo $res1['name']; ?>" name="author_name" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="exampleSelectBorder">Select Status</label>
                     <select class="custom-select" name="status" id="exampleSelectBorder">
                       <option value="enable">Enable</option>
                       <option value="disable">Disable</option>
                     </select>
-                  </div>
+                  </div> -->
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

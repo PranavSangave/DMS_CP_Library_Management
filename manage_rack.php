@@ -302,13 +302,6 @@
                     <label for="exampleInputEmail1">Rack Name</label>
                     <input type="text" name="rack_name" class="form-control" id="exampleInputEmail1" placeholder="Enter Book Name">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleSelectBorder">Select Status</label>
-                    <select class="custom-select" name="status" id="exampleSelectBorder">
-                      <option value="enable">Enable</option>
-                      <option value="disable">Disable</option>
-                    </select>
-                  </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
@@ -338,7 +331,6 @@
                 <tr>
                   <th>Rack Id</th>
                   <th>Rack Name</th>
-                  <th>Status</th>
                   <th>Delete</th>
                   <th>Edit</th>
                 </tr>
@@ -357,7 +349,6 @@
                           <tr>
                             <td><?php echo $res['rackid']; ?></td>
                             <td><?php echo $res['name']; ?></td>
-                            <td><?php echo $res['status']; ?></td>
                             <td><a href="deletePhp/DeleteRackAction.php?id=<?php echo $res['rackid']; ?>"  title="delete"><i class="fa fa-trash"></i></a></td>
                             <td><a href="update_rack.php?id=<?php echo $res['rackid']; ?>"  title="Update"><i class="fa fa-edit"></i></a></td>
                       </tr>
@@ -370,7 +361,6 @@
                 <tr>
                   <th>Rack Id</th>
                   <th>Rack Name</th>
-                  <th>Status</th>
                   <th>Delete</th>
                   <th>Edit</th> 
                 </tr>
