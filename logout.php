@@ -8,7 +8,7 @@ session_destroy();
 // header('location:98327454387.php');
 ?>
 <script type="text/javascript">
-  location.replace("98327454387.php")
+  location.replace("login.php")
 </script>
 <?php
 ?>

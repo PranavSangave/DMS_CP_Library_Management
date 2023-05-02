@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['username'])){
+  header('Location: login.php');
+}
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -217,7 +225,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="./index.html" class="nav-link">
+                  <a href="logout.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Click to Logout</p>
                   </a>

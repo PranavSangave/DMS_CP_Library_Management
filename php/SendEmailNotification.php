@@ -33,6 +33,7 @@ echo "hi";
     }
     
     echo "<script>alert('Reminder Sent Successfully');</script>";
+    echo "<script> window.location.href = '../index.php'; </script>";
 }
 
 // Close the database connection
